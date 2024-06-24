@@ -1,6 +1,11 @@
+
+<h1 id="main">
+    Deeplinking...
+</h1>
+
 <script>
     const isMobileDevice = () => {
-        const agent = navigator.userAgent || navigator.vendor || (window as any).opera // Apparently old opera browsers used to have an window.operate object, while newer chrominum based version don't
+        const agent = navigator.userAgent || navigator.vendor || window.opera // Apparently old opera browsers used to have an window.operate object, while newer chrominum based version don't
   
         if (!agent) {
             return false
@@ -17,13 +22,9 @@
     }
   
     const params = new URLSearchParams(window.location.search)
-    const coachId = params.get('coachId')
     const deepLinkUrl = params.get('url')
     if (isMobileDevice()) {
         window.location.href = deepLinkUrl
+        document.getElementById("main")
     }
   </script>
-
-<h1>
-    Deeplinking...
-</h1>
