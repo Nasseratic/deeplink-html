@@ -21,7 +21,7 @@
     }
 
     const params = new URLSearchParams(window.location.search)
-    const deepLinkUrl = params.get('url') + params.entries().filter(([k]) => k !== 'url')
+    const deepLinkUrl = params.get('url') + "&"+ params.entries().filter(([k]) => k !== 'url')
         .map(([k, v]) => `${k}=${v}`)
         .reduce((acc, curr) => `${acc ? acc + "&" : ""}${curr}`, "")
     if (isMobileDevice()) {
