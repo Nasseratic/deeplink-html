@@ -1,6 +1,6 @@
 
 <h1 id="main">
-    Deeplinking...
+   Opening in the app...
 </h1>
 
 <script>
@@ -21,10 +21,9 @@
         )
     }
   
-    const params = new URLSearchParams(window.location.search)
+    const params = new URLSearchParams()
     const deepLinkUrl = params.get('url')
     if (isMobileDevice()) {
-        window.location.href = deepLinkUrl
-        document.getElementById("main")
+        window.location.href = window.location.search
     }
   </script>
