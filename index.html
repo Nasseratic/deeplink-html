@@ -24,6 +24,6 @@
     const params = new URLSearchParams()
     const deepLinkUrl = params.get('url')
     if (isMobileDevice()) {
-        window.location.href = window.location.search
+        window.location.href = window.location.search.slice(1)
     }
   </script>
