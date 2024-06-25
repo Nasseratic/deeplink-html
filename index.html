@@ -1,16 +1,15 @@
-
 <h1 id="main">
-   Opening in the app...
+    Opening in the app...
 </h1>
 
 <script>
     const isMobileDevice = () => {
         const agent = navigator.userAgent || navigator.vendor || window.opera // Apparently old opera browsers used to have an window.operate object, while newer chrominum based version don't
-  
+
         if (!agent) {
             return false
         }
-  
+
         return (
             /(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|iris|kindle|lge |maemo|midp|mmp|mobile.+firefox|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows ce|xda|xiino|android|ipad|playbook|silk/i.test(
                 agent,
@@ -20,10 +19,12 @@
             )
         )
     }
-  
+
     const params = new URLSearchParams(window.location.search)
-    const deepLinkUrl = params.get('url')
+    const deepLinkUrl = params.get('url') + params.entries().filter(([k]) => k !== 'url')
+        .map(([k, v]) => `${k}=${v}`)
+        .reduce((acc, curr) => `${acc ? acc + "&" : ""}${curr}`, "")
     if (isMobileDevice()) {
         window.location.href = deepLinkUrl
     }
-  </script>
+</script>
